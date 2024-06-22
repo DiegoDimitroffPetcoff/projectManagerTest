@@ -14,9 +14,8 @@ const INITIAL_STATE = [
 
 export function useForm() {
   const [project, setProject] = useState(() => {
-    const boardFromStorage = window.localStorage.getItem("data");
-
-    if (boardFromStorage) return JSON.parse(boardFromStorage);
+    const projectStorage = window.localStorage.getItem("data");
+    if (projectStorage) return JSON.parse(projectStorage);
     return INITIAL_STATE;
   });
 

@@ -1,16 +1,10 @@
-import { useForm } from "../hooks/useForm";
-
 export function Content({ project, projectId, handleChange }) {
-/*   const { handleChange } = useForm(); */
-
   return (
     <>
-      {" "}
       {project.content &&
         project.content.map((content, contentId) => {
           return (
-            <>
-              {" "}
+            <div key={contentId}>
               <textarea
                 value={content.contentSubtitle}
                 placeholder="Subtitle"
@@ -25,7 +19,7 @@ export function Content({ project, projectId, handleChange }) {
                   handleChange(e, projectId, contentId, "contentSubcontent")
                 }
               />
-            </>
+            </div>
           );
         })}
     </>
