@@ -4,11 +4,13 @@ const INITIAL_STATE = [
     title: "",
     content: [],
     img: "",
+    section: [],
   },
   {
     title: "",
     content: [],
     img: "",
+    section: [],
   },
 ];
 
@@ -31,6 +33,15 @@ export function useForm() {
       window.localStorage.setItem("data", JSON.stringify(newProject));
 
       setProject(newProject);
+    } else if (
+      "sectionTitle" === field ||
+      "sectionImg" === field ||
+      "sectionBudget" === field
+    ) {
+      newProject[moduleId].section[contentId][field] = value;
+      window.localStorage.setItem("data", JSON.stringify(newProject));
+
+      setProject(newProject);
     }
   }
 
@@ -49,5 +60,17 @@ export function useForm() {
     setProject(newProject);
     window.localStorage.setItem("data", JSON.stringify(newProject));
   }
-  return { handleChange, handleSubmite, addContent, project };
+
+  function addSection(e, moduleId) {
+    const newProject = [...project];
+    newProject[moduleId].section.push({
+      title: "",
+      content: [],
+      img: "",
+      budget: [],
+      section: [],
+    });
+    setProject(newProject);
+  }
+  return { handleChange, handleSubmite, addContent, project, addSection };
 }

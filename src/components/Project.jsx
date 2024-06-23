@@ -1,8 +1,10 @@
 import { useForm } from "../hooks/useForm";
 import { Content } from "./Content";
+import { Section } from "./Section";
 
 export function Project() {
-  const { handleChange, handleSubmite, addContent, project } = useForm();
+  const { handleChange, handleSubmite, addContent, addSection, project } =
+    useForm();
   return (
     <form
       onSubmit={handleSubmite}
@@ -27,8 +29,16 @@ export function Project() {
                 projectId={projectId}
                 handleChange={handleChange}
               />
+              <Section
+                project={project}
+                projectId={projectId}
+                handleChange={handleChange}
+              />
               <button onClick={(e) => addContent(e, projectId, null)}>
                 Add Content
+              </button>
+              <button onClick={(e) => addSection(e, projectId, null)}>
+                Add Section
               </button>
             </div>
           );
